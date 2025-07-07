@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cozinha da Puque - Marmitas Artesanais</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .flavor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .flavor-card.selected {
+            border: 3px solid #f97316;
+            background-color: #fef3c7;
+        }
+        
+    </style>
+</head>
+<body class="font-sans bg-amber-50 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="bg-green-800 text-amber-50 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-utensils text-2xl text-amber-300"></i>
+                <span class="text-2xl font-bold">Cozinha da Puque</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="hover:text-amber-300 transition">Início</a>
+                <a href="#about" class="hover:text-amber-300 transition">Sobre</a>
+                <a href="#flavors" class="hover:text-amber-300 transition">Sabores</a>
+            </div>
+            <button class="md:hidden text-2xl focus:outline-none" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-green-700 px-4 py-2" id="mobile-menu">
+            <a href="#home" class="block py-2 hover:text-amber-300 transition">Início</a>
+            <a href="#about" class="block py-2 hover:text-amber-300 transition">Sobre</a>
+            <a href="#flavors" class="block py-2 hover:text-amber-300 transition">Sabores</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Parallax -->
+    <section id="home" class="parallax min-h-screen flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+        <div class="bg-black bg-opacity-50 text-center p-8 rounded-lg mx-4">
+            <h1 class="text-4xl md:text-6xl font-bold text-amber-50 mb-4">Cozinha da Puque</h1>
+            <p class="text-xl md:text-2xl text-amber-100 mb-8">Marmitas feitas com amor e ingredientes selecionados</p>
+            <a href="#flavors" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-full text-lg transition duration-300 inline-block">
+                Escolha seu sabor
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-green-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-green-800 mb-12">Nossa História</h2>
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <div class="parallax h-64 md:h-96 rounded-lg shadow-lg" style="background-image: url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold text-amber-700 mb-4">Tradição e Sabor</h3>
+                    <p class="text-gray-700 mb-4">A Cozinha da Puque nasceu da paixão por comida caseira e ingredientes frescos. Nossa missão é trazer o sabor da cozinha tradicional para o seu dia a dia, com praticidade e qualidade.</p>
+                    <p class="text-gray-700 mb-4">Usamos apenas ervas frescas, temperos artesanais e carnes selecionadas, tudo preparado com técnicas que preservam os nutrientes e realçam os sabores.</p>
+                    <div class="flex items-center space-x-4 mt-6">
+                        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-100 text-amber-700">
+                            <i class="fas fa-leaf text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-green-800">Ingredientes Naturais</h4>
+                            <p class="text-sm text-gray-600">Sem conservantes ou aditivos químicos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ingredients Showcase with Parallax -->
+    <section class="parallax py-20" style="background-image: url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+        <div class="container mx-auto px-4">
+            <div class="bg-black bg-opacity-70 text-center p-8 rounded-lg max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-amber-300 mb-6">Nossos Ingredientes</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-green-800 bg-opacity-80 p-4 rounded-lg">
+                        <i class="fas fa-seedling text-3xl text-amber-300 mb-2"></i>
+                        <h3 class="text-amber-100 font-semibold">Ervas Frescas</h3>
+                    </div>
+                    <div class="bg-green-800 bg-opacity-80 p-4 rounded-lg">
+                        <i class="fas fa-mortar-pestle text-3xl text-amber-300 mb-2"></i>
+                        <h3 class="text-amber-100 font-semibold">Temperos Artesanais</h3>
+                    </div>
+                    <div class="bg-green-800 bg-opacity-80 p-4 rounded-lg">
+                        <i class="fas fa-drumstick-bite text-3xl text-amber-300 mb-2"></i>
+                        <h3 class="text-amber-100 font-semibold">Carnes Selecionadas</h3>
+                    </div>
+                    <div class="bg-green-800 bg-opacity-80 p-4 rounded-lg">
+                        <i class="fas fa-apple-alt text-3xl text-amber-300 mb-2"></i>
+                        <h3 class="text-amber-100 font-semibold">Vegetais Orgânicos</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="flavors" class="py-16 bg-amber-50">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center text-green-800 mb-8">Monte sua Marmita</h2>
+          <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Escolha até <strong>2/3 proteínas</strong> e <strong>3/4/5 acompanhamentos</strong>.</p>
+      
+          <!-- Proteínas -->
+          <div class="mb-10">
+            <h3 class="text-xl font-bold text-amber-700 mb-4">🥩 Proteínas</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+              <label><input type="checkbox" class="mr-2" name="proteina" value="Carne de panela com batatas e cenouras">Carne de panela com batatas e cenouras</label>
+              <label><input type="checkbox" class="mr-2" name="proteina" value="Carne de panela com mandiocas">Carne de panela com mandiocas</label>
+              <label><input type="checkbox" class="mr-2" name="proteina" value="Carne assada ao molho de cerveja">Carne assada ao molho de cerveja</label>
+              <label><input type="checkbox" class="mr-2" name="proteina" value="Carne moída ao molho de tomates">Carne moída ao molho de tomates</label>
+              <label><input type="checkbox" class="mr-2" name="proteina" value="Almôndegas de carne nutritivas">Almôndegas de carne nutritivas</label>
+              <label><input type="checkbox" class="mr-2" name="proteina" value="Filézinho de frango à milanesa">Filézinho de frango à milanesa</label>
+              <label><input type="checkbox" class="mr-2" name="proteina" value="Strogonoff de frango">Strogonoff de frango</label>
+              <label><input type="checkbox" class="mr-2" name="proteina" value="Escondidinho de frango">Escondidinho de frango</label>
+              <label><input type="checkbox" class="mr-2" name="proteina" value="Escondidinho de carne">Escondidinho de carne</label>
+              <label><input type="checkbox" class="mr-2" name="proteina" value="Escondidinho de abóbora com calabresa">Escondidinho de abóbora com calabresa</label>
+              <label><input type="checkbox" class="mr-2" name="proteina" value="Sobrecoxa ao molho de laranja">Sobrecoxa ao molho de laranja</label>
+              <label><input type="checkbox" class="mr-2" name="proteina" value="Frango à parmegiana">Frango à parmegiana</label>
+              <label><input type="checkbox" class="mr-2" name="proteina" value="Frango de panela">Frango de panela</label>
+              <label><input type="checkbox" class="mr-2" name="proteina" value="Almôndegas de frango nutritivas">Almôndegas de frango nutritivas</label>
+              <label><input type="checkbox" class="mr-2" name="proteina" value="Iscas de frango">Iscas de frango</label>
+              <label><input type="checkbox" class="mr-2" name="proteina" value="Frango xadrez">Frango xadrez</label>
+              <label><input type="checkbox" class="mr-2" name="proteina" value="Costelinha barbecue">Costelinha barbecue</label>
+              <label><input type="checkbox" class="mr-2" name="proteina" value="Carne louca">Carne desfiada com pimentões (Carne Louca)</label>
+              <label><input type="checkbox" class="mr-2" name="proteina" value="Panqueca de carne">Panqueca de carne ao sugo artesanal</label>
+              <label><input type="checkbox" class="mr-2" name="proteina" value="Panqueca de frango">Panqueca de frango ao molho branco</label>
+            </div>
+          </div>
+      
+          <!-- Acompanhamentos -->
+          <div class="mb-10">
+            <h3 class="text-xl font-bold text-amber-700 mb-4">🍽️ Acompanhamentos</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+              <label><input type="checkbox" class="mr-2" name="acomp" value="Arroz parbolizado">Arroz parbolizado</label>
+              <label><input type="checkbox" class="mr-2" name="acomp" value="Arroz à grega">Arroz à grega</label>
+              <label><input type="checkbox" class="mr-2" name="acomp" value="Feijão carioca">Feijão carioca</label>
+              <label><input type="checkbox" class="mr-2" name="acomp" value="Feijão preto">Feijão preto</label>
+              <label><input type="checkbox" class="mr-2" name="acomp" value="Salada de grão de bico">Salada de grão de bico</label>
+              <label><input type="checkbox" class="mr-2" name="acomp" value="Purê de batatas">Purê de batatas</label>
+              <label><input type="checkbox" class="mr-2" name="acomp" value="Batatas assadas">Batatas assadas</label>
+              <label><input type="checkbox" class="mr-2" name="acomp" value="Batatas soutê com bacon">Batatas soutê com bacon</label>
+              <label><input type="checkbox" class="mr-2" name="acomp" value="Macarrão ao alho">Macarrão ao alho</label>
+              <label><input type="checkbox" class="mr-2" name="acomp" value="Macarronada ao sugo">Macarronada ao sugo</label>
+              <label><input type="checkbox" class="mr-2" name="acomp" value="Couve-flor e brócolis gratinados">Couve-flor e brócolis gratinados</label>
+              <label><input type="checkbox" class="mr-2" name="acomp" value="Couve manteiga refogada">Couve manteiga refogada</label>
+              <label><input type="checkbox" class="mr-2" name="acomp" value="Abóbora cabotcha">Abóbora cabotcha</label>
+              <label><input type="checkbox" class="mr-2" name="acomp" value="Quiabo refogado">Quiabo refogado</label>
+              <label><input type="checkbox" class="mr-2" name="acomp" value="Repolho e cenoura">Repolho e cenoura refogados</label>
+              <label><input type="checkbox" class="mr-2" name="acomp" value="Mix de legumes">Mix de legumes no vapor</label>
+              <label><input type="checkbox" class="mr-2" name="acomp" value="Sunomono">Sunomono (pepino agridoce)</label>
+              <label><input type="checkbox" class="mr-2" name="acomp" value="Creme de milho">Creme de milho</label>
+              <label><input type="checkbox" class="mr-2" name="acomp" value="Farofa">Farofa</label>
+              <label><input type="checkbox" class="mr-2" name="acomp" value="Antepasto de berinjela">Antepasto de berinjela</label>
+              <label><input type="checkbox" class="mr-2" name="acomp" value="Tabule">Tabule</label>
+              <label><input type="checkbox" class="mr-2" name="acomp" value="Feijoada">Feijoada (mínimo 10 unid.)</label>
+            </div>
+          </div>
+      
+          <!-- Botão de Finalizar Pedido -->
+          <div class="text-center mt-10">
+            <button onclick="proceedToCheckout()" class="bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-8 rounded-full text-lg transition">
+              Finalizar Pedido
+            </button>
+          </div>
+        </div>
+      </section>
+      
+
+    <!-- Testimonials with Parallax -->
+    <section class="parallax py-20" style="background-image: url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+        <div class="bg-black bg-opacity-70 py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">O que dizem nossos clientes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-green-700 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-amber-300 flex items-center justify-center text-green-800 font-bold mr-4">A</div>
+                        <div>
+                            <h4 class="font-bold">Ana Clara</h4>
+                            <div class="flex text-amber-300">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-amber-100">"As marmitas da Puque são incríveis! O frango teriyaki tem um sabor único, parece comida caseira da melhor qualidade."</p>
+                </div>
+                <div class="bg-green-700 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-amber-300 flex items-center justify-center text-green-800 font-bold mr-4">R</div>
+                        <div>
+                            <h4 class="font-bold">Roberto</h4>
+                            <div class="flex text-amber-300">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-amber-100">"Adoro a variedade de sabores e a qualidade dos ingredientes. A carne de panela é minha favorita, sempre muito macia e saborosa."</p>
+                </div>
+                <div class="bg-green-700 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-amber-300 flex items-center justify-center text-green-800 font-bold mr-4">M</div>
+                        <div>
+                            <h4 class="font-bold">Mariana</h4>
+                            <div class="flex text-amber-300">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-amber-100">"Perfeito para quem busca uma alimentação saudável sem abrir mão do sabor. O peixe grelhado com ervas é divino!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-green-900 text-amber-50 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-utensils text-2xl text-amber-300"></i>
+                        <span class="text-2xl font-bold">Cozinha da Puque</span>
+                    </div>
+                    <p class="text-amber-100 mt-2">Marmitas artesanais feitas com amor</p>
+                </div>
+                <div class="text-center md:text-right">
+                    <p>&copy; 2023 Cozinha da Puque. Todos os direitos reservados.</p>
+                    <div class="mt-2">
+                        <a href="#" class="text-amber-200 hover:text-amber-300 transition mr-4">Política de Privacidade</a>
+                        <a href="#" class="text-amber-200 hover:text-amber-300 transition">Termos de Serviço</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Flavor selection
+        let selectedFlavor = null;
+        
+        function selectFlavor(element, flavor) {
+            // Remove selected class from all cards
+            document.querySelectorAll('.flavor-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked card
+            element.classList.add('selected');
+            
+            // Set selected flavor
+            selectedFlavor = flavor;
+            
+            // Update selected flavor display
+            const flavorName = element.querySelector('h3').textContent;
+            const flavorPrice = element.querySelector('span.text-lg').textContent;
+            
+            document.getElementById('flavor-name').textContent = flavorName;
+            document.getElementById('flavor-price').textContent = flavorPrice;
+            
+            // Show selected flavor section
+            document.getElementById('selected-flavor').classList.remove('hidden');
+        }
+        
+            function proceedToCheckout() {
+        const selecionadosProteina = Array.from(document.querySelectorAll('input[name="proteina"]:checked'))
+            .map(el => `- ${el.value}`);
+        const selecionadosAcomp = Array.from(document.querySelectorAll('input[name="acomp"]:checked'))
+            .map(el => `- ${el.value}`);
+
+        if (selecionadosProteina.length === 0 && selecionadosAcomp.length === 0) {
+            alert('Por favor, selecione pelo menos um item antes de finalizar o pedido.');
+            return;
+        }
+
+        let mensagem = `Olá! 😊 Quero fazer meu pedido personalizado da *Cozinha da Puque*:\n\n`;
+
+        if (selecionadosProteina.length > 0) {
+            mensagem += `*🍖 Proteínas:*\n${selecionadosProteina.join('\n')}\n\n`;
+        }
+
+        if (selecionadosAcomp.length > 0) {
+            mensagem += `*🍽️ Acompanhamentos:*\n${selecionadosAcomp.join('\n')}\n\n`;
+        }
+
+        mensagem += `Obrigado(a)! Aguardo confirmação 🙌`;
+
+        const numeroWhatsApp = "5519996933879"; // ← troque aqui pelo seu número real
+        const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+
+        window.open(url, '_blank');
+        }
+
+
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
